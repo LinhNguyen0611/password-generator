@@ -38,18 +38,18 @@
 				</div>
 			</div>
 			<div class="row clearfix form-group">
-				<div class="col-md-3">Uppercases</div>
-				<div class="col-md-6">
-					<label>
-                        <input type="checkbox" name="uppercase" id="uppercase"> ( e.g. ABC )
-                    </label>
-				</div>
-			</div>
-			<div class="row clearfix form-group">
 				<div class="col-md-3">Lowercases</div>
 				<div class="col-md-6">
 					<label>
                         <input type="checkbox" name="lowercase" id="lowercase"> ( e.g. abc )
+                    </label>
+				</div>
+			</div>
+			<div class="row clearfix form-group">
+				<div class="col-md-3">Uppercases</div>
+				<div class="col-md-6">
+					<label>
+                        <input type="checkbox" name="uppercase" id="uppercase"> ( e.g. ABC )
                     </label>
 				</div>
 			</div>
@@ -146,8 +146,8 @@ function generate() {
 	var numbers = $('#items').val();
 	var arr = [];
 	if (isSpecial) arr.push([0]);
-	if (isUppercase) arr.push([1]);
-	if (isLowercase) arr.push([2]);
+	if (isLowercase) arr.push([1]);
+	if (isUppercase) arr.push([2]);
 	if (isNumber) arr.push([3]);
 	var out = '';
 	for (var i = 0; i <= numbers - 1; i++) {
