@@ -29,6 +29,16 @@
                     </label>
 				</div>
 			</div>
+
+			<div class="row clearfix form-group">
+				<div class="col-md-3">Include characters</div>
+				<div class="col-md-6">
+					<label>
+                        <input type="text" name="include" id="include" value="">
+                    </label>
+				</div>
+			</div>
+
 			<div class="row clearfix form-group">
 				<div class="col-md-3">Special characters</div>
 				<div class="col-md-6">
@@ -134,7 +144,7 @@ function genType(arr, len) {
 		all_ += types[arr[i]];
 	}
 	password_ += all_.pick(len - arr.length);
-	return password_;
+	return password_.shuffle();
 }
 
 function generate() {
@@ -144,6 +154,7 @@ function generate() {
 	var isNumber = $('#numbers').is(":checked");
 	var length = $('#length').val();
 	var numbers = $('#items').val();
+	var include = $('#include').val().toString();
 	var arr = [];
 	if (isSpecial) arr.push([0]);
 	if (isLowercase) arr.push([1]);
@@ -151,7 +162,8 @@ function generate() {
 	if (isNumber) arr.push([3]);
 	var out = '';
 	for (var i = 0; i <= numbers - 1; i++) {
-		var pass = genType(arr, length);
+		var pass = genType(arr, length - include.length);
+		pass = (pass + include).shuffle();
 		pass = pass.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 		out += pass + '<br>';
 	}
